@@ -16,6 +16,7 @@ void rotate_image(
 	// X / Y AS GLOBAL IDX (FOR)
     const int x1 = get_global_id(0);
     const int y1 = get_global_id(1);
+	const int channel = get_global_id(2);
 
 	// CALCULATE NEW (ROTATED) POSITION FOR CURRENT COORDINATES
 	float x2 = cos * ( x1 - x0 ) - sin * ( y1 - y0 ) + x0;
@@ -26,8 +27,6 @@ void rotate_image(
 	int pixelDest = (x1 + y1 * width) * rgb_factor;
 	
 	// WRITE RGB VALUES TO DESTINATION BUFFER
-	dest_buffer[pixelDest + 0] = src_buffer[pixelSource + 0];
-	dest_buffer[pixelDest + 1] = src_buffer[pixelSource + 1];
-	dest_buffer[pixelDest + 2] = src_buffer[pixelSource + 2];
+	dest_buffer[pixelDest + channel] = src_buffer[pixelSource + channel];
 }
 	
