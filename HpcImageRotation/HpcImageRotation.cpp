@@ -147,8 +147,8 @@ int  main(void)
 
 		// PREPARE ADD KERNEL
 		// SET ND RANGE FOR KERNEL (matrix size, local and global ranges)
-		cl::NDRange global(src_rgb.size());
-		cl::NDRange local(1); //make sure local range is divisible by global range
+		cl::NDRange global(tga_image->width, tga_image->height, tga_image->type == 1 ? 4 : 3);
+		cl::NDRange local(1,1,1); //make sure local range is divisible by global range
 		cl::NDRange offset(0); // START FROM 0,0
 		std::cout << "CALL 'rotate_image' KERNEL" << std::endl;
 		// ENQUEUE KERNEL EXECUTION
