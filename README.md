@@ -4,7 +4,7 @@ HPC OpenCL Image Rotation
 lenna.tga & rotation.cl => Debug bzw. ins selbe Verzeichnis wie HpcImageRotation.exe
 
 # Selected Platform
-  bei mir NVidia = 0, Intel = 1
+  z.B. NVidia = 0, Intel = 1
   const int SELECTED_PLATFORM = 1;
 
 Project Configuration:
