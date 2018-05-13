@@ -39,6 +39,11 @@ int  main(void)
 			std::cout << "No OpenCL platforms available!\n";
 			return EXIT_FAILURE;
 		}
+		cl::Platform platform;
+		if (platforms.size() == 1)
+			platform = platforms[0];
+		else
+			platform = platforms[1];
 
 		// create a context and get available devices
 		const cl_platform_info attributeTypes[5] = {
@@ -48,7 +53,8 @@ int  main(void)
 			CL_PLATFORM_PROFILE,
 			CL_PLATFORM_EXTENSIONS };
 
-		cl::Platform platform = platforms[SELECTED_PLATFORM]; // on a different machine, you may have to select a different platform!
+		// cl::Platform platform = platforms[SELECTED_PLATFORM]; 
+		// on a different machine, you may have to select a different platform!
 
 		std::cout << "Selected Platform Information: " << std::endl;
 		std::cout << "Platform ID: " << SELECTED_PLATFORM << std::endl;
@@ -118,7 +124,7 @@ int  main(void)
 			return EXIT_FAILURE;
 		}
 
-		float theta = 3.14159f; // *3 / 2.0f; // THETA in radians (odd * pi = vertical, even * pi horizontal rotation)
+		float theta = 3.14159f / 2.0f; // *3 / 2.0f; // THETA in radians (odd * pi = vertical, even * pi horizontal rotation)
 		float cos_theta = cosf(theta);
 		float sin_theta = sinf(theta);
 
